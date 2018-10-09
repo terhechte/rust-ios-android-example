@@ -1,0 +1,8 @@
+use android_c_headers::*;
+use worker::Worker;
+
+foreigner_class!(class Worker {
+    self_type Worker;
+    constructor Worker::new() -> Worker;
+    method Worker::action(&self, string: &str) -> String;
+});

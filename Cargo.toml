@@ -1,0 +1,48 @@
+[package]
+name = "android"
+version = "0.0.1"
+authors = ["Evgeniy A. Dushistov <dushistov@mail.ru>"]
+build = "build.rs"
+
+[lib]
+name = "mobcore"
+crate-type = ["cdylib", "staticlib"]
+
+[dependencies]
+log = "0.4"
+log-panics = "2.0"
+foreign-types = "0.3.0"
+
+[target.'cfg(target_os = "ios")'.dependencies]
+libc = "0.2"
+core-foundation = "0.6.2"
+
+[target.'cfg(target_os = "android")'.dependencies]
+android_logger = "0.5"
+
+[build-dependencies]
+bindgen = "0.37.4"
+syntex = "0.58"
+walkdir = "2"
+cbindgen = "0.6.0"
+rust_swig = { path = "macroslib" }
+
+[profile.dev]
+opt-level = 0
+debug = true
+rpath = false
+lto = false
+codegen-units = 8
+panic = 'unwind'
+incremental = true
+overflow-checks = true
+
+[profile.release]
+opt-level = 3
+debug = false
+rpath = false
+lto = true
+codegen-units = 1
+panic = 'unwind'
+incremental = false
+overflow-checks = false
