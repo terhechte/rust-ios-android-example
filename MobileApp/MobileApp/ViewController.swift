@@ -3,12 +3,17 @@ import UIKit
 class ViewController: UIViewController {
     
     @IBOutlet var actionLabel: UILabel?
-    
-    var session = session_new()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let string = session_action(self.session!, "Klaus")!.takeRetainedValue()
+
+        // Create a session
+        let session = session_new()
+
+        // Call the action method
+        let string = session_action(session!, "Hello World")!.takeRetainedValue()
+
+        // Apply string to UI
         let s = string as NSString
         self.actionLabel?.text = s as String
     }

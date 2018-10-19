@@ -8,7 +8,6 @@ impl Worker {
     }
 
     pub fn action(&self, string: &str) -> String {
-        return "WOOHOO".to_string();
-        //format!("number: {}, {}", self.number, string.chars().rev().collect::<String>())
+        string.to_owned().replace("World", "Łódź")
     }
 }
