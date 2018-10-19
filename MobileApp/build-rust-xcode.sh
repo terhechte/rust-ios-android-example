@@ -7,6 +7,7 @@
 export PATH="$PATH:${HOME}/.cargo/bin"
 
 set -e
+set -x
 
 function build_target () {
     TARGET_NAME="$1"
@@ -46,7 +47,7 @@ function build_target () {
             if [[ $RUST_ARCH = "arm64" ]]; then
                 RUST_ARCH="aarch64"
             fi
-
+            env
             cargo build $RUST_CONFIGURATION_FLAG $CARGO_PROJECT_FLAG --target "${RUST_ARCH}-apple-${RUST_TARGET_OS}"
             EXECUTABLES+=("target/${RUST_ARCH}-apple-${RUST_TARGET_OS}/${RUST_CONFIGURATION}/${TARGET_NAME}")
         done
@@ -62,3 +63,4 @@ function build_target () {
 build_target mobcore ""
 
 set +e
+set +x

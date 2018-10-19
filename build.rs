@@ -36,7 +36,7 @@ fn main() {
     // these lines also serve as a guard so only true android triples receive
     // JNI generation.
     let target = env::var("TARGET").unwrap();
-    if ["arm-linux-androideabi", "i686-linux-android", "x86_64-linux-android"]
+    if ["arm-linux-androideabi", "i686-linux-android", "x86_64-linux-android"] // , , 
         .contains(&target.as_str())
     {
         gen_for_android(&target);
@@ -75,6 +75,7 @@ fn gen_for_android(target: &str) {
     let src_dir = Path::new(RUST_SRC_DIR);
     let out_dir = env::var("OUT_DIR").unwrap();
 
+    println!("{:?}", &include_headers);
     gen_binding(
         &target,
         &include_dirs,

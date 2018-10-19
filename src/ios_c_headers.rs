@@ -1,12 +1,4 @@
 /// Define a structure that wraps the rust `Session` type with FFI
-
-// FIXME:
-// the `Session` is the android wrapper. move it to a sep file
-// create a iOS wrapper
-// create the actual type (session?) somewhere else
-// maybe find a nice thing to do, maybe even with strings
-// for iOS, consider using rust's NSString support to return a proper memory-managed string
-// instead of relying on cstring hell
 use worker::Worker;
 
 use core_foundation::base::TCFType;
@@ -53,7 +45,11 @@ pub unsafe extern "C" fn session_action(session: *mut Session, string: *const c_
     let string = cstring_to_str(&string).unwrap();
     let worker_ptr = (*session).worker;
     let worker: &mut Worker = &mut *(worker_ptr as *mut Worker);
-    CFString::new(&worker.action(string)).as_concrete_TypeRef()
+    let string = worker.action(string);
+    let cf_string = CFString::new(&string);
+    let cf_string_ref = cf_string.as_concrete_TypeRef();
+    mem::forget(cf_string);
+    cf_string_ref
 }
 
 #[no_mangle]

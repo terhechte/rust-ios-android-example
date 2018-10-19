@@ -8,6 +8,7 @@ impl Worker {
     }
 
     pub fn action(&self, string: &str) -> String {
-        format!("number: {}, {}", self.number, string.chars().rev().collect::<String>())
+        return "WOOHOO".to_string();
+        //format!("number: {}, {}", self.number, string.chars().rev().collect::<String>())
     }
 }

@@ -3,6 +3,7 @@
 ## iOS
 ```
 rustup target add x86_64-apple-ios
+rustup target add aarch64-apple-ios 
 ```
 
 ## Android
@@ -62,6 +63,18 @@ rustup target add x86_64-linux-android
 To link the libraries, you will need the android NDK and generate standalone
 toolchains for each target (edit the install dir as required):
 
+Some env variables need to be present:
+``` shell
+# The Android NDK
+set -x ANDROID_NDK ~/Desktop/android-ndk-r18/
+```
+
+``` shell
+# Where you want the Android toolchains to be installed
+# folder has to be created
+set -x ANDROID_TOOLCHAINS ~/Desktop/Archive/mobilecore-rust/xtoolchains/
+```
+(use eval on fish)
 ``` shell
 # ARM
 $ANDROID_NDK/build/tools/make-standalone-toolchain.sh --platform="android-27" --toolchain=arm-linux-androideabi-4.9 --install-dir=$ANDROID_TOOLCHAINS/android-27-arm-linux-androideabi-4.9  --arch=arm

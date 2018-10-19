@@ -21,7 +21,8 @@ core-foundation = "0.6.2"
 android_logger = "0.5"
 
 [build-dependencies]
-bindgen = "0.37.4"
+#bindgen = "0.37.4"
+bindgen = "0.42.2"
 syntex = "0.58"
 walkdir = "2"
 cbindgen = "0.6.0"

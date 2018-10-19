@@ -43,7 +43,7 @@ def rustBasePath = ".."
 def cargoOutputDir = "${rustBasePath}/target"
 def archTriplets = ['armeabi': 'arm-linux-androideabi',
                     //'arm64': 'aarch64-linux-android',
-                    'x86': 'i686-linux-android',
+                    //'x86': 'i686-linux-android',
                     'x86_64': 'x86_64-linux-android']
 
 // TODO: only pass --release if buildType is release

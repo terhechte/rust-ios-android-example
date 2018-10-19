@@ -29,8 +29,12 @@ public class MainActivity extends AppCompatActivity {
         });
 
         final TextView tv_greet = (TextView) findViewById(R.id.greetingLabel);
+
+
         final Worker worker = new Worker();
         tv_greet.setText(worker.action("Benedikt"));
+
+
     }
 
     @Override

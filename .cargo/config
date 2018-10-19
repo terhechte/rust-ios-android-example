@@ -1,0 +1,15 @@
+#[target.aarch64-linux-android]
+#linker = ""
+#runner = "./run-on-adroid.sh"
+
+[target.arm-linux-androideabi]
+linker = "./xtoolchains/android-27-arm-linux-androideabi-4.9/bin/clang"
+runner = "./run-on-adroid.sh"
+
+[target.i686-linux-android]
+linker = "./xtoolchains/android-27-x86-4.9/bin/clang"
+runner = "./run-on-adroid.sh"
+
+[target.x86_64-linux-android]
+linker = "./xtoolchains/android-27-x86_64-4.9/bin/clang"
+runner = "./run-on-adroid.sh"
