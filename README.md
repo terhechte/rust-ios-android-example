@@ -1,3 +1,14 @@
+This is an old fork of [https://github.com/rust-windowing/android-rs-glue](https://github.com/rust-windowing/android-rs-glue) in order to add Swift / iOS support. Ignore the Android parts (use the above-linked android-rs-glue instead). The Swift/iOS part is maybe useful. What it does is the following:
+
+- Add `C` bindings to Rust types (via Repr(C) and `cbindgen`) 
+- Add Xcode Project [MobileApp](MobileApp)
+- Add a [build script to the Xcode project that automatically compiles Rust as a dependency](MobileApp/https://github.com/terhechte/rust-ios-android-example/blob/master/MobileApp/build-rust-xcode.sh) (Shamelessly pulled from XI-Mac)
+- Configure the Rust [build.rs](https://github.com/terhechte/rust-ios-android-example/blob/master/build.rs) script to also create a C header file in `target/mobileapp-ios.h` (created on each compile)
+- Add that `mobileapp-ios.h` to the Xcode project and import it
+- Finally, use the imported Rust in the [ViewController](MobileApp/MobileApp/ViewController.swift)
+
+This is all a bit undocumented. I always wanted to clean it up, but never did so.
+
 # Prerequisites
 
 ## iOS
